@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All Students</h2>
+<ul>
+    {% for s in students %}
+        <li>{{ s.name }} → {{ careers[s.career_id] }}
+            <a href="{{ url_for('students.edit_student', student_id=s.id) }}">✏️ Edit</a>
+            <a href="{{ url_for('students.delete_student', student_id=s.id) }}">❌ Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="/add_student">➕ Add Student</a>
+{% endblock %}
+

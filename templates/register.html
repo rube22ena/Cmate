@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Register</h2>
+<form method="POST" onsubmit="return validateForm()">
+    <label>Username:</label>
+    <input type="text" name="username" id="username" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" id="password" required>
+    <button type="button" onclick="togglePassword('password')">👁 </button><br><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" name="confirm_password" id="confirm_password" required>
+    <button type="button" onclick="togglePassword('confirm_password')">👁 </button><br><br>
+
+    <input type="submit" value="Register" class="btn">
+    <input type="reset" value="Clear" class="btn-secondary">
+</form>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    field.type = field.type === "password" ? "text" : "password";
+}
+
+function validateForm() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm_password").value;
+
+    // Email validation (basic regex)
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        alert("⚠️ Please enter a valid email address.");
+        return false;
+    }
+
+    // Password length check
+    if (password.length < 6) {
+        alert("⚠️ Password must be at least 6 characters long.");
+        return false;
+    }
+
+    // Confirm password check
+    if (password !== confirmPassword) {
+        alert("⚠️ Passwords do not match.");
+        return false;
+    }
+
+    return true; // allow form submission
+}
+</script>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C-Mate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to C-Mate</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a> |
+        <!-- <li><a href="{{ url_for('auth.logout') }}">🚪 Logout</a></li> -->
+        <!-- <a href="{{ url_for('students.add_student') }}">Add Student</a> |
+        <!-- <a href="{{ url_for('students.list_students') }}">View Students</a> -->
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Login</h2>
+<form method="POST">
+    <label>Email:</label>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" id="password" required>
+    <button type="button" onclick="togglePassword()">👁</button><br><br>
+
+    <input type="submit" value="Login" class="btn">
+</form>
+
+<script>
+function togglePassword() {
+    const field = document.getElementById("password");
+    field.type = field.type === "password" ? "text" : "password";
+}
+</script>
+{% endblock %}
